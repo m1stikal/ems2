@@ -31,15 +31,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'polls.apps.PollsConfig',
-    'ems.apps.EmsConfig',
+    # Django base apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Third party apps
     'rest_framework',
+
+    # Alcomems apps
+    'polls.apps.PollsConfig',
+    'ems.apps.EmsConfig',
 ]
 
 MIDDLEWARE = [
@@ -79,9 +84,9 @@ WSGI_APPLICATION = 'alcomems.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'alcomems',
-        'USER': 'alcomemsuser',
-        'PASSWORD': 'AlcomP@ss12#$',
+        'NAME': 'test',
+        'USER': 'test',
+        'PASSWORD': 'test',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -129,7 +134,11 @@ STATIC_URL = '/static/'
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    )
 }
