@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'alcomems.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'alcomems',
-        'USER': 'alcomemsuser',
-        'PASSWORD': 'AlcomP@ss12#$',
+        'NAME': 'test',
+        'USER': 'test',
+        'PASSWORD': 'test',
         'HOST': 'localhost',
         'PORT': '',
     }
